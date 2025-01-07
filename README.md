@@ -1,66 +1,46 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+the commands I used to create the project:
+composer create-project laravel/laravel shopify
+create database shopify_laravel
+create user postgres with password postgres
+php artisan migrate
+php artisan make:command getShopifyColletionsAndProducts
+php artisan app:get-shopify-colletions-and-products
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+following commands will open the project:
+1. clone project
+2. go to shopify_boa_ideas folder with powershell command line
+3. write composer install to install dependencies
+4. add .env file. example found file in project directory
+5. write php artisan key:generate to generate Laravel application key
+6. I created a postgresql instance with database called 'shopify_laravel'. the username and password were:'postgres' the database parameters, as notified in the .env file are:
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=shopify_laravel
+DB_USERNAME=postgres
+DB_PASSWORD=postgres
+you need to create a postgres database and a user and place their connection details in the .env file
+# you need to add an env variable:
+SHOPIFY_API=api_key
+to .env file
+that is the variable that allows you to apply to the graphql API. the one you sent in the assignment.
+7. run "php artisan migrate"
+# the tasks will not run without it
+8. then write php artisan serve to run server
 
-## About Laravel
+in order to run server one must write: php artisan serve
+9. in order to run scheduled commands you need to run separately, in another powershell command line:
+php artisan app:get-shopify-colletions-and-products
+php artisan app:update-products
+php artisan schedule:run
+php artisan schedule:work
+and keep it open (the first two commands are to get the collections and products data. the rest will run daily)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# I didn't plant the scheduling into the crontab system because I don't know which OS you are going to use, so powershell command line that is running in the background all the time is the best choice.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## We used one view to all pages to keep the design stable and to make changes to the design easier
+# we scheduled commands as tasks and used Cache::lock in order to lock them.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# The loading of the products and collections pages work like this: when the page loads there is a partial loading of a chunck of products/collections respectively. When the loading of the page ends, javascript fetches the rest and loads them on the table. I took this "partial greedy" policy in order to prevent slow loading of the page from one side, while not using too many queries to fetch the data
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# The relationship between the Collection model and the Product model are belongsToMany belongsToMany respectively, because products clearly belong to a collection, but you also indicated in the assignment that I was supposed to show, for every product, the collections it relates to, hence the Model architecture.
