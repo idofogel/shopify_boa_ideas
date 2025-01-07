@@ -14,8 +14,8 @@ class Kernel extends ConsoleKernel
     {
         print_r('in schedule');
         // getShopifyColletionsAndProducts::class
-        $schedule->command('app:get-shopify-colletions-and-products')->everyTwoMinutes(); //daily command that runs on shopify and gets all the products and collections
-        $schedule->command('app:update-products')->everyTwoMinutes();
+        $schedule->command('app:get-shopify-colletions-and-products')->daily(); //daily command that runs on shopify and gets all the products and collections
+        $schedule->command('app:update-products')->daily();
         // $schedule->command('your:command')->daily(); //daily command that runs on shopify and gets all the products and collections
         // $schedule->command('inspire')->hourly();
     }

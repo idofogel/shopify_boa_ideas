@@ -23,10 +23,11 @@ SHOPIFY_API=api_key
 to .env file
 that is the variable that allows you to apply to the API
 #the tasks will not run without it
-6. then write php artisan serve to run server
+6. then write php artisan migrate for the database
+7. then write php artisan serve to run server
 
 in order to run server one must write: php artisan serve
-7.in order to run scheduled commands you need to run separately, in another powershell command line:
+8. in order to run scheduled commands you need to run separately, in another powershell command line:
 php artisan schedule:run
 php artisan schedule:work
 and keep it open
