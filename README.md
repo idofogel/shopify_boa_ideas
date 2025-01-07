@@ -1,10 +1,10 @@
-the commands I used to create the project:
-composer create-project laravel/laravel shopify
-create database shopify_laravel
-create user postgres with password postgres
-php artisan migrate
-php artisan make:command getShopifyColletionsAndProducts
-php artisan app:get-shopify-colletions-and-products
+The commands I used to create the project:
+composer create-project laravel/laravel shopify  
+create database shopify_laravel  
+create user postgres with password postgres  
+php artisan migrate  
+php artisan make:command getShopifyColletionsAndProducts  
+php artisan app:get-shopify-colletions-and-products  
 
 ## The following commands will open the project:
 1. Clone project
