@@ -36,7 +36,7 @@ php artisan schedule:run
 php artisan schedule:work
 and keep it open (the first two commands are to get the collections and products data. the rest will run daily)
 # Routes
-The route collections leads you to the collections page
+The route collections leads you to the collections page 
 The route products leads you to the products page
 # Scheduling
 I didn't plant the scheduling into the crontab system because I don't know which OS you are going to use, so powershell command line that is running in the background all the time is the best choice.
