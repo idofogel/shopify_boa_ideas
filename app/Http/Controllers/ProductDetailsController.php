@@ -10,6 +10,7 @@ use Illuminate\View\View;
 //this controller handles the product's details page. both functions here provide details of product so putting them together doesn't break the sacred single responsibility directive
 class ProductDetailsController extends Controller
 {
+    //gets products dynamically
     public function fetchMoreproducts($offset)
     {
         $products = Product::skip($offset)->get(); // Fetch the next batch
@@ -20,16 +21,6 @@ class ProductDetailsController extends Controller
         return response()->json($products);
     }
     
-    public function ert(): View
-    {
-        $products = [];
-        foreach (Product::all() as $prd) {
-            print_r($prd);
-            print_r(value: '<br />');
-        }
-        // print_r($products);
-        return view('greet', ['products' => $products]);
-    }
     public function products(): View
     {
         $number_of_drawed = 50;
