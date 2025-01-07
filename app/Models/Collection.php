@@ -14,6 +14,7 @@ class Collection extends Model
         'description',
         'handle',
     ];
+    // all the products that are included in a collection
     public function products()
     {
         return $this->belongsToMany(Product::class, 'collection_product', 'collection_id', 'product_id');

@@ -6,7 +6,7 @@ php artisan migrate
 php artisan make:command getShopifyColletionsAndProducts  
 php artisan app:get-shopify-colletions-and-products  
 
-## The following commands will open the project:
+## Run the following commands to open the project:
 1. Clone project
 2. Go to shopify_boa_ideas folder with powershell command line
 3. Write composer install to install dependencies

@@ -19,12 +19,7 @@ class Product extends Model
         'min_variant_compare',
         'collection_id'
     ];
-    public function collection()
-    {
-        // return $this->belongsTo(Collection::class, 'collection_shopify_id', 'shopify_id'); // 'collection_shopify_id' is the foreign key, 'shopify_id' is the primary key.
-        // return $this->belongsTo(Collection::class, 'collection_id'); //last one
-        return $this->belongsToMany(Collection::class, 'collection_product', 'product_id', 'collection_id');
-    }
+    //all the collections that the product belongs to
     public function collections()
     {
         return $this->belongsToMany(Collection::class, 'collection_product', 'product_id', 'collection_id');
