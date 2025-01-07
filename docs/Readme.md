@@ -10,7 +10,7 @@ following commands will open the project:
 1. clone project
 2. go to shopify_boa_ideas folder with powershell command line
 3. write composer install to install dependencies
-4. add .env file. example found in env.txt file in project directory
+4. add .env file. example found file in project directory
 5. write php artisan key:generate to generate Laravel application key
 6. I created a postgresql instance with database called 'shopify_laravel'. the username and password were:'postgres' the database parameters, as notified in the .env file are:
 DB_CONNECTION=pgsql
@@ -19,11 +19,11 @@ DB_PORT=5432
 DB_DATABASE=shopify_laravel
 DB_USERNAME=postgres
 DB_PASSWORD=postgres
-you need to create a postgres database and a user.
+you need to create a postgres database and a user and place their connection details in the .env file
 # you need to add an env variable:
 SHOPIFY_API=api_key
 to .env file
-that is the variable that allows you to apply to the API
+that is the variable that allows you to apply to the graphql API. the one you sent in the assignment.
 7. run "php artisan migrate"
 # the tasks will not run without it
 8. then write php artisan serve to run server
