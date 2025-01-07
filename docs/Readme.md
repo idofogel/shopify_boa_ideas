@@ -12,18 +12,18 @@ php artisan app:get-shopify-colletions-and-products
 3. Write composer install to install dependencies
 4. Add .env file. example found file in project directory
 5. Write php artisan key:generate to generate Laravel application key
-6. I created a postgresql instance with database called 'shopify_laravel'. the username and password were:'postgres' the database parameters, as notified in the .env file are:
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=shopify_laravel
-DB_USERNAME=postgres
-DB_PASSWORD=postgres
-you need to create a postgres database and a user and place their connection details in the .env file
-# you need to add an env variable:
+6. I created a postgresql instance with database called 'shopify_laravel'. The username and password were:'postgres' the database parameters, as notified in the .env file are:
+DB_CONNECTION=pgsql  
+DB_HOST=127.0.0.1  
+DB_PORT=5432  
+DB_DATABASE=shopify_laravel  
+DB_USERNAME=postgres  
+DB_PASSWORD=postgres  
+You need to create a postgres database and a user and place their connection details in the .env file
+# You need to add an env variable:
 SHOPIFY_API=api_key
-to .env file
-that is the variable that allows you to apply to the graphql API. the one you sent in the assignment.
+to .env file.  
+That is the variable that allows you to apply to the graphql API. The one you sent in the assignment.
 7. Run "php artisan migrate"
 # The tasks will not run without it
 8. Then write php artisan serve to run server
