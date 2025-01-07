@@ -7,11 +7,12 @@ php artisan make:command getShopifyColletionsAndProducts
 php artisan app:get-shopify-colletions-and-products
 
 following commands will open the project:
-1.clone project
+1. clone project
 2. go to shopify_boa_ideas folder with powershell command line
-3.write composer install to install dependencies
-4. write php artisan key:generate to generate Laravel application key
-5. I created a postgresql instance with database called 'shopify_laravel'. the username and password were:'postgres' the database parameters, as notified in the .env file are:
+3. write composer install to install dependencies
+4. add .env file. example found in env.txt file in project directory
+5. write php artisan key:generate to generate Laravel application key
+6. I created a postgresql instance with database called 'shopify_laravel'. the username and password were:'postgres' the database parameters, as notified in the .env file are:
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
 DB_PORT=5432
@@ -23,14 +24,17 @@ you need to create a postgres database and a user.
 SHOPIFY_API=api_key
 to .env file
 that is the variable that allows you to apply to the API
+7. run "php artisan migrate"
 # the tasks will not run without it
-6. then write php artisan serve to run server
+8. then write php artisan serve to run server
 
 in order to run server one must write: php artisan serve
-7. in order to run scheduled commands you need to run separately, in another powershell command line:
+9. in order to run scheduled commands you need to run separately, in another powershell command line:
+php artisan app:get-shopify-colletions-and-products
+php artisan app:update-products
 php artisan schedule:run
 php artisan schedule:work
-and keep it open
+and keep it open (the first two commands are to get the collections and products data. the rest will run daily)
 
 # I didn't plant the scheduling into the crontab system because I don't know which OS you are going to use, so powershell command line that is running in the background all the time is the best choice.
 
